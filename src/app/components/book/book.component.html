@@ -1,0 +1,32 @@
+<div *ngIf="currentBook">
+    <h1 class="text-center">{{currentBook?.name}}</h1>
+    <small *ngIf="currentBook?.isbn">isbn szám: {{currentBook?.isbn}}</small>
+    <hr>
+    <div *ngIf="currentBook?.authors![0]">
+        <h3>A könyv szerzői:</h3>
+        <div class="d-flex justify-content-center">
+            <table class="got-table table">
+                <tr *ngFor="let author of currentBook?.authors;">
+                    <td class="text-center p-2">
+                        {{author}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+    </div>
+    <ul *ngIf="currentBook">
+        <li *ngIf="currentBook?.numberOfPages">A könyv {{currentBook!.numberOfPages}} oldalból áll.</li>
+        <li *ngIf="currentBook?.publisher">Kiadó: {{currentBook!.publisher}}</li>
+        <li *ngIf="currentBook?.country">Kiadás helye: {{currentBook!.country}}</li>
+        <li *ngIf="currentBook?.released">Kiadás ideje: {{currentBook!.released}}</li>
+        <li *ngIf="currentBook?.mediaType">Formátum: {{currentBook!.mediaType}}</li>
+    </ul>
+    <div *ngIf="currentBook?.characters![0]">
+        <h3>Szereplők:</h3>
+        <app-character-pagination [characterUrls]="currentBook?.characters ?? []"></app-character-pagination>
+    </div>
+</div>
+<div *ngIf="!currentBook">
+    <h2>Loading...</h2>
+</div>

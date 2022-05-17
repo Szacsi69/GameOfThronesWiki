@@ -1,0 +1,17 @@
+nav {
+    background-color:#17202a;
+}
+
+nav .nav-link {
+    background-color:   #af601a ;
+    color:   #FFC300;
+}
+
+nav .nav-link:hover {
+    background-color:   #af601a ;
+    color:   #17202a;
+}
+
+nav button {
+    background-color:   #FFC300;
+}

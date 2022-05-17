@@ -1,0 +1,16 @@
+<div class="d-flex flex-column align-items-center"> 
+    <div class="d-flex justify-content-center col-12">                
+        <button class="paging-button btn col-lg-3 col-1" (click)="prevPage();" [disabled]="!isPrevPage() || !loaded">&#10096;</button>
+        <button class="paging-button btn col-lg-2 col-5" (click)="loadPage();" [disabled]="loaded">Listázás</button>
+        <button class="paging-button btn col-lg-3 col-1" (click)="nextPage();" [disabled]="!isNextPage() || !loaded">&#10097;</button>
+    </div>
+    <table class="got-table table">
+        <tr *ngFor="let house of housePage;">
+            <td class=" text-center p-2">
+                <a href="houses/{{getHouseId(house.url)}}">
+                    {{ house.name }}
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

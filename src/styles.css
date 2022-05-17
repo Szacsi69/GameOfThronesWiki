@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #17202a;
+}
+
+.got-table {
+    background-color: #FFC300;
+    color: #17202a;
+    border: 5px solid #17202a;
+}
+
+.got-table a {
+    color:#17202a;
+    text-decoration: none;
+}
+
+.got-table a:hover {
+    color:#17202a;
+    text-decoration: underline;
+}
+
+.got-table-header {
+    background-color: #af601a;
+    color: #FFC300;
+}
+
+.alncenter {
+    text-align: center;
+}
+
+.title-img {
+    width: 150px;
+    height: auto;
+}
+
+.paging-button {
+    background-color: #af601a;
+    color: #FFC300;
+    border: 2px solid #FFC300;
+}
+
+.paging-button:hover {
+    background-color: #FFC300;
+    color: #af601a;
+    border: 2px solid #FFC300;
+}
+

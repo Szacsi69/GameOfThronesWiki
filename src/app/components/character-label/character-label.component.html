@@ -1,0 +1,14 @@
+<div>
+    <table class="got-table table">
+        <tr>
+            <td *ngIf="character" class="text-center p-2">
+                <a href="/characters/{{getCharacterId(character.url)}}">
+                    {{ character!.name }}
+                </a>
+            </td>
+            <td *ngIf="!character" class="text-center p-2">
+                Nem ismert.
+            </td>
+        </tr>
+    </table>
+</div>

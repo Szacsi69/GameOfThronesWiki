@@ -1,0 +1,87 @@
+<div *ngIf="currentCharacter">
+    <h1 class="text-center">{{currentCharacter?.name === "" ? currentCharacter?.aliases![0] : currentCharacter?.name}}</h1>
+    <hr>
+    <h5 *ngIf="currentCharacter?.name">Hivatalos neve: {{currentCharacter!.name}}</h5>
+    <h5 *ngIf="!currentCharacter?.name">Hivatalos neve: Nem ismert.</h5>
+    <hr>
+    <ul *ngIf="currentCharacter">
+        <li *ngIf="currentCharacter?.gender"><strong>Neme:</strong> {{currentCharacter!.gender}}</li>
+        <li *ngIf="currentCharacter?.culture"><strong>Kultúra:</strong> {{currentCharacter!.culture}}</li>
+        <li *ngIf="currentCharacter?.born"><strong>Született:</strong> {{currentCharacter!.born}}</li>
+        <li *ngIf="currentCharacter?.died"><strong>Elhunyt:</strong> {{currentCharacter!.died}}</li>
+    </ul>
+    <div *ngIf="currentCharacter?.titles![0]">
+        <h3>Viselt címek:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let title of currentCharacter!.titles;">
+                <td class="text-center p-2">
+                    {{ title }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.aliases![0]">
+        <h3>Áliász nevek:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let alias of currentCharacter!.aliases;">
+                <td class="text-center p-2">
+                    {{ alias }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div>
+        <h3>Édesapja:</h3>
+        <app-character-label [characterUrl]="currentCharacter?.father!"></app-character-label>
+        <hr>
+    </div>
+    <div>
+        <h3>Édesanyja:</h3>
+        <app-character-label [characterUrl]="currentCharacter?.mother!"></app-character-label>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.spouse">
+        <h3>Hitvese:</h3>
+        <app-character-label [characterUrl]="currentCharacter?.spouse!"></app-character-label>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.allegiances![0]">
+        <h3>Hűséges:</h3>
+        <app-house-pagination [houseUrls]="currentCharacter?.allegiances ?? []"></app-house-pagination>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.allegiances![0]">
+        <h3>Könyvek:</h3>
+        <app-book-pagination [bookUrls]="currentCharacter?.books ?? []"></app-book-pagination>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.tvSeries![0]">
+        <h3>Sorozat évadok:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let season of currentCharacter!.tvSeries;">
+                <td class="text-center p-2">
+                    {{ season }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentCharacter?.playedBy![0]">
+        <h3>Színész:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let actor of currentCharacter!.playedBy;">
+                <td class="text-center p-2">
+                    {{ actor }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+</div>
+<div *ngIf="!currentCharacter">
+    <h2>Loading...</h2>
+</div>
+
+

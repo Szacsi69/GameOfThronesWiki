@@ -1,0 +1,105 @@
+<div *ngIf="currentHouse">
+    <h1 class="text-center">{{ currentHouse?.name }}</h1>
+    <hr>
+    <div>
+        <h3>Régió:</h3>
+        <table class="got-table table">
+            <tr>
+                <td *ngIf="currentHouse?.region" class="text-center p-2">
+                    {{ currentHouse!.region }}
+                </td>
+                <td *ngIf="!currentHouse?.region" class="text-center p-2">
+                    Nem ismert.
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div>
+        <h3>Címer:</h3>
+        <table class="got-table table">
+            <tr>
+                <td *ngIf="currentHouse?.coatOfArms" class="text-center p-2">
+                    {{ currentHouse!.coatOfArms }}
+                </td>
+                <td *ngIf="!currentHouse?.coatOfArms" class="text-center p-2">
+                    Nem ismert.
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.words">
+        <h3>Mondás:</h3>
+        <h4 class="text-center fw-bold fst-italic">"{{ currentHouse!.words }}"</h4>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.titles![0]">
+        <h3>Címek:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let title of currentHouse!.titles;">
+                <td class="text-center p-2">
+                    {{ title }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.seats![0]">
+        <h3>Mandátumok:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let seat of currentHouse!.seats;">
+                <td class="text-center p-2">
+                    {{ seat }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.currentLord">
+        <h3>Lord:</h3>
+        <app-character-label [characterUrl]="currentHouse?.currentLord!"></app-character-label>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.heir">
+        <h3>Örökös:</h3>
+        <app-character-label [characterUrl]="currentHouse?.heir!"></app-character-label>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.overlord">
+        <h3>Hűbérúr:</h3>
+        <app-house-label [houseUrl]="currentHouse?.overlord!"></app-house-label>
+        <hr>
+    </div>
+    <div>
+        <h3>Alapító:</h3>
+        <app-character-label [characterUrl]="currentHouse?.founder!"></app-character-label>
+        <p *ngIf="currentHouse?.founded"><strong>Alapíva:</strong> {{ currentHouse!.founded }}</p>
+        <p *ngIf="currentHouse?.diedOut"><strong>Kihalt:</strong> {{ currentHouse!.founded }}</p>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.ancestralWeapons![0]">
+        <h3>Ősi fegyverek:</h3>
+        <table class="got-table table">
+            <tr *ngFor="let weapon of currentHouse!.ancestralWeapons;">
+                <td class="text-center p-2">
+                    {{ weapon }}
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.cadetBranches![0]">
+        <h3>Örökös házak:</h3>
+        <app-house-pagination [houseUrls]="currentHouse?.cadetBranches ?? []"></app-house-pagination>
+        <hr>
+    </div>
+    <div *ngIf="currentHouse?.swornMembers![0]">
+        <h3>Felesküdött tagok:</h3>
+        <app-character-pagination [characterUrls]="currentHouse?.swornMembers ?? []"></app-character-pagination>
+        <hr>
+    </div>
+</div>
+<div *ngIf="!currentHouse">
+    <h2>Loading...</h2>
+</div>
